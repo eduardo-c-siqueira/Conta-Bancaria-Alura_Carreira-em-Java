@@ -1,0 +1,6 @@
+public enum TipoTransacao {
+    TRANSFERENCIA_EFETUADA,
+    TRANSFERENCIA_RECEBIDA,
+    SAQUE,
+    DEPOSITO
+}
