@@ -30,6 +30,10 @@ public class Cliente {
         return telefone;
     }
 
+    public String getLogin() {
+        return login;
+    }
+
     public void setTelefone(String telefone) {
         //TODO: Adaptar para pedir login e senha antes de alterar
         this.telefone = telefone;

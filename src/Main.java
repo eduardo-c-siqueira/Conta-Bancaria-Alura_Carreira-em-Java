@@ -7,6 +7,14 @@ public class Main {
         Conta contaMaria = new Conta(TipoConta.CORRENTE,"111112","A", clienteMaria,1000,300,200);
         Conta contaJoao = new Conta(TipoConta.CORRENTE, "111211","A", clienteJoao,200, 100, 100);
 
+        Gerente gerente = new Gerente("Eduardo","edu","123123");
+        Agencia agencia = new Agencia("A", gerente);
+        agencia.adicionaContaTeste(contaMaria);
+        agencia.adicionaContaTeste(contaJoao);
+        MenuInicial menu = new MenuInicial(agencia);
+
+        menu.exibirMenuInicial();
+/*
         contaMaria.saque(100.50);
         contaJoao.saque(400);
         contaMaria.transferencia(contaJoao,200);
@@ -15,5 +23,6 @@ public class Main {
 
         System.out.println(contaJoao.getHistoricoDeTransacoes());
         System.out.println(contaMaria.getHistoricoDeTransacoes());
+*/
     }
 }

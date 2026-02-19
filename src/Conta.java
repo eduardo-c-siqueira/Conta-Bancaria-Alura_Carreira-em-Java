@@ -3,10 +3,10 @@ import java.util.List;
 
 public class Conta {
 
-    private TipoConta tipo;
-    private String numeroCC;
-    private String agencia;
-    private Cliente titular;
+    private final TipoConta tipo;
+    private final String numeroCC;
+    private final String agencia;
+    private final Cliente titular;
     private double saldo;
     private double limiteSaque;
     private double limiteTransferencia;
@@ -25,6 +25,7 @@ public class Conta {
         this.titular.setConta(this);
     }
 
+    //TODO: Adicionar forma de validar que os valores não sejam negativos nas operações
     //Verifica se o valor a sacar está dentro do limite definido,
     // e se o saldo é suficiente, e retorna o saldo após a operação
     public double saque(double valorSacado){
