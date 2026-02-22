@@ -11,27 +11,31 @@ public class Gerente {
         this.senha = senha;
     }
 
-    public void cadastrarCliente(String nome, String cpf, String login, String senha){
+    void cadastrarCliente(String nome, String cpf, String login, String senha){
         this.agencia.cadastraCliente(new Cliente(nome, cpf, login, senha));
     }
 
-    public void criarConta(TipoConta tipo, String numeroCC, String agencia, Cliente titular,
-                           double saldo, double limiteSaque, double limiteTransferencia){
+    boolean criarConta(TipoConta tipo, String agencia, Cliente titular,NivelConta nivel){
 
-        this.agencia.criaConta(new Conta(tipo, numeroCC, agencia, titular, saldo,
-                limiteSaque, limiteTransferencia));
-
+        String numeroCC = this.agencia.gerarNumeroCC();
+        return this.agencia.criaConta(new Conta(tipo, numeroCC, agencia, titular, nivel));
     }
 
-    public boolean validaLogin(String nomeUsuario, String senha){
+    boolean validaLogin(String nomeUsuario, String senha){
         return nomeUsuario.equals(this.nomeUsuario) && senha.equals(this.senha);
     }
 
-    public String getNome() {
+    String getNome() {
         return this.nome;
     }
 
-    public void setAgencia(Agencia agencia) {
+    //TODO: Talvez criar serviço de gestão de cadastro para mudar nome de usuário e senha
+
+    Agencia getAgencia() {
+        return agencia;
+    }
+
+    void setAgencia(Agencia agencia) {
         this.agencia = agencia;
     }
 }

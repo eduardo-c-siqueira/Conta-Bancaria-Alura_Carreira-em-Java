@@ -1,7 +1,7 @@
 import java.util.List;
 import java.util.Scanner;
 
-public class MenuInicial {
+public class SistemaAgencia {
 
     private Agencia agencia;
     private Conta conta;
@@ -36,11 +36,11 @@ public class MenuInicial {
             3 - Sair
             """;
 
-    public MenuInicial(Agencia agencia) {
+    public SistemaAgencia(Agencia agencia) {
         this.agencia = agencia;
     }
 
-    public void exibirMenuInicial(){
+    void exibirMenuInicial(){
         while(true){
             System.out.println(menuInicial);
             String opcaoEscolhida = sc.nextLine().trim();
@@ -215,7 +215,6 @@ public class MenuInicial {
                 case "2" -> {
                     //criar conta
                     //TODO: Criar tratamento para opções inválidas
-
                     System.out.println("Para qual cliente deseja criar a conta?");
                     List<Cliente> clientesSemConta = this.agencia.clientesSemConta();
                     for (int i = 1; i <= clientesSemConta.size(); i++){
@@ -234,7 +233,16 @@ public class MenuInicial {
                     TipoConta tipoEscolhido = tipos[opcaoDeTipo-1];
                     System.out.println("Escolhido: " + tipoEscolhido);
 
-                    //tipo, numero, agencia, cliente, saldo, limite saque, limite transf.
+                    System.out.println("Escolha o nível da conta:");
+                    NivelConta[] niveis = NivelConta.values();
+                    for (int i = 1; i <= niveis.length; i++){
+                        System.out.println(i + " - " + niveis[i-1]);
+                    };
+                    int opcaoDeNivel = Integer.parseInt(sc.nextLine());
+                    NivelConta nivelEscolhido = niveis[opcaoDeNivel-1];
+                    System.out.println("Escolhido: " + nivelEscolhido);
+
+                    boolean contaCriada = this.agencia.getGerente().criarConta(tipoEscolhido,this.agencia.getNome(),clienteEscolhido,nivelEscolhido);
 
                 }
 
